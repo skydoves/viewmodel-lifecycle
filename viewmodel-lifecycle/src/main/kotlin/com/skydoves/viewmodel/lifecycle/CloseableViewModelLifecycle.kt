@@ -73,7 +73,10 @@ private fun ViewModel.traverseViewModel(): Class<in ViewModel>? {
  */
 internal class CloseableViewModelLifecycleOwner : Closeable, ViewModelLifecycleOwner {
 
-  private val viewModelLifecycle: ViewModelLifecycle = ViewModelLifecycle(this)
+  private val viewModelLifecycle: ViewModelLifecycle = ViewModelLifecycle(
+    provider = this,
+    isEnforceMainThread = true
+  )
 
   init {
     viewModelLifecycle.handleLifecycleEvent(Lifecycle.Event.ON_START)

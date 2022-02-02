@@ -156,7 +156,7 @@ public class ViewModelLifecycle constructor(
           "It is too late to change lifecycle state."
       )
 
-    // sets to a new target state
+    // sets a new target state
     state = event.targetState
 
     // dispatches a new target event to all observers

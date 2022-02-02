@@ -23,12 +23,9 @@ package com.skydoves.viewmodel.lifecycle
  */
 public interface DefaultViewModelLifecycleObserver : FullViewModelLifecycleObserver {
 
-  override fun onInitialized(viewModelLifecycleOwner: ViewModelLifecycleOwner) {
-  }
+  override fun onInitialized(viewModelLifecycleOwner: ViewModelLifecycleOwner) {}
 
-  override fun onCleared(viewModelLifecycleOwner: ViewModelLifecycleOwner) {
-  }
+  override fun onCleared(viewModelLifecycleOwner: ViewModelLifecycleOwner) {}
 
-  override fun onStateChanged(viewModelState: ViewModelState) {
-  }
+  override fun onStateChanged(viewModelState: ViewModelState) {}
 }

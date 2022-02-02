@@ -27,6 +27,5 @@ public interface FullViewModelLifecycleObserver : ViewModelLifecycleObserver {
 
   public fun onCleared(viewModelLifecycleOwner: ViewModelLifecycleOwner)
 
-  override fun onStateChanged(viewModelState: ViewModelState) {
-  }
+  override fun onStateChanged(viewModelState: ViewModelState) {}
 }
