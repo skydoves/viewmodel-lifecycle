@@ -5,10 +5,11 @@
   <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
   <a href="https://github.com/skydoves/ViewModel-Lifecycle/actions/workflows/android.yml"><img alt="API" src="https://github.com/skydoves/ViewModel-Lifecycle/actions/workflows/android.yml/badge.svg"/></a>
   <a href="https://github.com/skydoves"><img alt="Profile" src="https://skydoves.github.io/badges/skydoves.svg"/></a>
+  <a href="https://skydoves.github.io/libraries/viewmodel-lifecycle/html/viewmodel-lifecycle/com.skydoves.viewmodel.lifecycle/index.html"><img alt="Dokka" src="https://skydoves.github.io/badges/dokka-viewmodel-lifecycle.svg"/></a>
 </p>
 
 <p align="center">
-🌳 ViewModel-Lifecycle allows you to track and observe Jetpack ViewModel's lifecycle changes.
+🌳 ViewModel Lifecycle allows you to track and observe Jetpack ViewModel's lifecycle changes.
 </p>
 
 <p align="center">
