@@ -44,11 +44,11 @@ repositories {
 }
 ```
 
-# Usage
+## Usage
 
 `ViewModel-Lifecycle` allows you to observe two lifecycle changes:  **initialized** and **cleared**.
 
-## ViewModelLifecycleOwner
+### ViewModelLifecycleOwner
 
 `ViewModelLifecycleOwner` is a lifecycle owner for Jetpack ViewModel, which extends [LifecycleOwner](https://developer.android.com/reference/androidx/lifecycle/LifecycleOwner). It traces and provides lifecycle states for ViewModels. You can get the `ViewModelLifecycleOwner` from your ViewModel as the following:
 
@@ -73,7 +73,7 @@ class MyViewModel : ViewModel() {
 }
 ```
 
-### ViewModelLifecycleOwner for LiveData
+#### ViewModelLifecycleOwner for LiveData
 
 You can also use it to observe your [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) with the `ViewModelLifecycleOwner` according to ViewModel's lifecycle. If the lifecycle moves to the cleared state, the observer will automatically be removed.
 
@@ -92,7 +92,7 @@ class MyViewModel : ViewModel() {
 
 > Note: If you use `ViewModelLifecycleOwner` to observe your LiveData, observers will receive every event before the lifecycle moves to the cleared state. But you'll not receive further events by Activity recreations such as screen rotation. So make sure which `lifecycleOwner` is the best solution.
 
-## ViewModelLifecycle
+### ViewModelLifecycle
 
 `ViewModelLifecycle` is an implementation of [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle), which follows the ViewModel's lifecycle. `ViewModelLifecycle` handles multiple `LifecycleObserver` such as `ViewModelLifecycleObserver` to track ViewModel's lifecycle. `ViewModelLifecycle` belongs to `ViewModelLifecycleOwner`, and you can get it directly from the [ViewModelLifecycleOwner] as the following:
 
@@ -100,7 +100,7 @@ class MyViewModel : ViewModel() {
 val viewModelLifecycle = viewModelLifecycleOwner.viewModelLifecycle
 ```
 
-## ViewModelLifecycle Observers
+### ViewModelLifecycle Observers
 
 You can observe the lifecycle changes of the `ViewModelLifecycle` with `addViewModelLifecycleObserver` extension as the following:
 
@@ -130,6 +130,8 @@ viewModelLifecycleOwner.lifecycle.addObserver(
 ```
 
 You can also implement your own custom lifecycle observer classes with `DefaultViewModelLifecycleObserver` and `FullViewModelLifecycleObserver` interfaces.
+
+<img src="https://user-images.githubusercontent.com/24237865/152125637-5f7830e9-c147-40f0-9d1c-951c9333179c.png" width="32%" align="right" />  
 
 ## ViewModel Lifecycle for Coroutines
 
