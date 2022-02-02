@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-<img src="preview/preview0.png" />
+<img src="preview/preview.svg" />
 </p>
 
 ## Including in your project
