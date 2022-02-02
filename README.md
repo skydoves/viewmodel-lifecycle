@@ -27,7 +27,7 @@ allprojects {
 }
 ```
 
-Next, add the dependency below to your **module**'s `build.gradle` file.
+Next, add the dependency below to your **module**'s `build.gradle` file:
 
 ```gradle
 dependencies {
@@ -175,7 +175,7 @@ class MyInteractor(
 }
 ```
 
-Make sure you cancel your custom `CoroutineScope` after observing the `ViewModelState.CLEARED`, and the `viewModelLifecycleFlow` extension must be launched on Main thread.
+Make sure you cancel your custom `CoroutineScope` after observing the `ViewModelState.CLEARED`, and the `viewModelLifecycleFlow` extension must be launched on **main** thread.
 
 ## Find this library useful? :heart:
 Support it by joining __[stargazers](https://github.com/skydoves/Lazybones/stargazers)__ for this repository. :star:<br>
