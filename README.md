@@ -18,6 +18,8 @@
 
 ## Including in your project
 
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/viewmodel-lifecycle.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22viewmodel-lifecycle%22)
+
 ### Gradle 
 Add the code below to your **root** `build.gradle` file (not your module build.gradle file):
 ```gradle
@@ -135,6 +137,8 @@ You can also implement your own custom lifecycle observer classes with `DefaultV
 <img src="https://user-images.githubusercontent.com/24237865/152125637-5f7830e9-c147-40f0-9d1c-951c9333179c.png" width="32%" align="right" />  
 
 ## ViewModel Lifecycle for Coroutines
+
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/viewmodel-lifecycle.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22viewmodel-lifecycle%22)
 
 `ViewModel-Lifecycle` also supports Coroutines to track and observe ViewModel's lifecycle changes.
 
