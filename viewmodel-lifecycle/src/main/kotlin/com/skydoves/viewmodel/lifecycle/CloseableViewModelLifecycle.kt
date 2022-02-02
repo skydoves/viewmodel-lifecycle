@@ -30,14 +30,16 @@ private const val JOB_KEY = "com.skydoves.viewmodel.lifecycle.ViewModelLifecycle
  */
 public val ViewModel.viewModelLifecycleOwner: ViewModelLifecycleOwner
   get() {
-    val getTagMethod = this.javaClass.superclass.getDeclaredMethod("getTag", String::class.java)
+    val viewModelClass = traverseViewModel()
+      ?: throw ClassNotFoundException("Couldn't find ViewModel class from super classes.")
+    val getTagMethod = viewModelClass.getDeclaredMethod("getTag", String::class.java)
     getTagMethod.isAccessible = true
     val lifecycleOwner: ViewModelLifecycleOwner? =
       getTagMethod.invoke(this, JOB_KEY) as? ViewModelLifecycleOwner
     if (lifecycleOwner != null) {
       return lifecycleOwner
     }
-    val setTagIfAbsentMethod = this.javaClass.superclass.getDeclaredMethod(
+    val setTagIfAbsentMethod = viewModelClass.getDeclaredMethod(
       "setTagIfAbsent",
       String::class.java,
       Any::class.java
@@ -49,6 +51,19 @@ public val ViewModel.viewModelLifecycleOwner: ViewModelLifecycleOwner
       CloseableViewModelLifecycleOwner()
     ) as ViewModelLifecycleOwner
   }
+
+/**
+ * @author skydoves (Jaewoong Eum)
+ *
+ * Traverses until find [ViewModel] from the super classes.
+ */
+private fun ViewModel.traverseViewModel(): Class<in ViewModel>? {
+  var superclass = this.javaClass.superclass
+  while (superclass != null && superclass.name.toString() != "androidx.lifecycle.ViewModel") {
+    superclass = superclass.superclass
+  }
+  return superclass
+}
 
 /**
  * @author skydoves (Jaewoong Eum)
