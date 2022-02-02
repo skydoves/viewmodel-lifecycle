@@ -1,0 +1,71 @@
+public final class com/skydoves/viewmodel/lifecycle/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public final class com/skydoves/viewmodel/lifecycle/CloseableViewModelLifecycleKt {
+	public static final fun getViewModelLifecycleOwner (Landroidx/lifecycle/ViewModel;)Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;
+}
+
+public abstract interface class com/skydoves/viewmodel/lifecycle/DefaultViewModelLifecycleObserver : com/skydoves/viewmodel/lifecycle/FullViewModelLifecycleObserver {
+	public abstract fun onCleared (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;)V
+	public abstract fun onInitialized (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;)V
+	public abstract fun onStateChanged (Lcom/skydoves/viewmodel/lifecycle/ViewModelState;)V
+}
+
+public final class com/skydoves/viewmodel/lifecycle/DefaultViewModelLifecycleObserver$DefaultImpls {
+	public static fun onCleared (Lcom/skydoves/viewmodel/lifecycle/DefaultViewModelLifecycleObserver;Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;)V
+	public static fun onInitialized (Lcom/skydoves/viewmodel/lifecycle/DefaultViewModelLifecycleObserver;Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;)V
+	public static fun onStateChanged (Lcom/skydoves/viewmodel/lifecycle/DefaultViewModelLifecycleObserver;Lcom/skydoves/viewmodel/lifecycle/ViewModelState;)V
+}
+
+public abstract interface class com/skydoves/viewmodel/lifecycle/FullViewModelLifecycleObserver : com/skydoves/viewmodel/lifecycle/ViewModelLifecycleObserver {
+	public abstract fun onCleared (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;)V
+	public abstract fun onInitialized (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;)V
+	public abstract fun onStateChanged (Lcom/skydoves/viewmodel/lifecycle/ViewModelState;)V
+}
+
+public final class com/skydoves/viewmodel/lifecycle/FullViewModelLifecycleObserver$DefaultImpls {
+	public static fun onStateChanged (Lcom/skydoves/viewmodel/lifecycle/FullViewModelLifecycleObserver;Lcom/skydoves/viewmodel/lifecycle/ViewModelState;)V
+}
+
+public final class com/skydoves/viewmodel/lifecycle/ViewModelLifecycle : androidx/lifecycle/Lifecycle {
+	public fun <init> (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;Z)V
+	public synthetic fun <init> (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun addObserver (Landroidx/lifecycle/LifecycleObserver;)V
+	public final fun addViewModelLifecycleObserver (Lkotlin/jvm/functions/Function1;)V
+	public final fun addViewModelLifecycleObserver (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
+	public fun getCurrentState ()Landroidx/lifecycle/Lifecycle$State;
+	public final fun getObserverCount ()I
+	public final fun isCleared ()Z
+	public fun removeObserver (Landroidx/lifecycle/LifecycleObserver;)V
+}
+
+public final class com/skydoves/viewmodel/lifecycle/ViewModelLifecycleExtensionKt {
+	public static final fun addViewModelOnClearedObserver (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycle;Lkotlin/jvm/functions/Function1;)V
+	public static final fun addViewModelOnInitializedObserver (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycle;Lkotlin/jvm/functions/Function1;)V
+}
+
+public abstract interface class com/skydoves/viewmodel/lifecycle/ViewModelLifecycleObserver : androidx/lifecycle/LifecycleObserver {
+	public abstract fun onStateChanged (Lcom/skydoves/viewmodel/lifecycle/ViewModelState;)V
+}
+
+public abstract interface class com/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner : androidx/lifecycle/LifecycleOwner {
+}
+
+public final class com/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwnerExtensionKt {
+	public static final fun addViewModelLifecycleObserver (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;Lkotlin/jvm/functions/Function1;)V
+	public static final fun addViewModelOnClearedObserver (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;Lkotlin/jvm/functions/Function1;)V
+	public static final fun addViewModelOnInitializedObserver (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;Lkotlin/jvm/functions/Function1;)V
+	public static final fun getViewModelLifecycle (Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycleOwner;)Lcom/skydoves/viewmodel/lifecycle/ViewModelLifecycle;
+}
+
+public final class com/skydoves/viewmodel/lifecycle/ViewModelState : java/lang/Enum {
+	public static final field CLEARED Lcom/skydoves/viewmodel/lifecycle/ViewModelState;
+	public static final field INITIALIZED Lcom/skydoves/viewmodel/lifecycle/ViewModelState;
+	public static fun valueOf (Ljava/lang/String;)Lcom/skydoves/viewmodel/lifecycle/ViewModelState;
+	public static fun values ()[Lcom/skydoves/viewmodel/lifecycle/ViewModelState;
+}
+

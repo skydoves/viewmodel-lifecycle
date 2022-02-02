@@ -1,0 +1,43 @@
+plugins {
+  id 'com.android.library'
+  id 'org.jetbrains.kotlin.android'
+  id 'org.jetbrains.dokka'
+  id 'binary-compatibility-validator'
+}
+
+apply from: "$rootDir/dependencies.gradle"
+
+android {
+  compileSdkVersion versions.compileSdk
+
+  defaultConfig {
+    minSdk versions.minSdk
+    targetSdk versions.compileSdk
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+  kotlinOptions.freeCompilerArgs += [
+      "-Xexplicit-api=strict",
+      "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+  ]
+}
+
+dependencies {
+  implementation project(":viewmodel-lifecycle")
+
+  implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutinesVersion"
+}
+
+apply plugin: "com.vanniktech.maven.publish"
+apply from: "$rootDir/spotless.gradle"

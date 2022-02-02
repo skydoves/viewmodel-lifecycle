@@ -1,0 +1,42 @@
+plugins {
+  id 'com.android.application'
+  id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "$rootDir/dependencies.gradle"
+
+android {
+  compileSdk versions.compileSdk
+
+  defaultConfig {
+    applicationId "com.skydoves.viewmodellifecycledemo"
+    minSdk versions.minSdk
+    targetSdk versions.compileSdk
+    versionCode versions.versionCode
+    versionName versions.versionName
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_11
+    targetCompatibility JavaVersion.VERSION_11
+  }
+
+  kotlinOptions {
+    jvmTarget = '11'
+  }
+
+  buildFeatures {
+    viewBinding true
+  }
+}
+
+dependencies {
+  implementation project(":viewmodel-lifecycle")
+  implementation project(":viewmodel-lifecycle-coroutines")
+
+  implementation "com.google.android.material:material:$versions.material"
+  implementation "androidx.fragment:fragment-ktx:$versions.fragmentVersion"
+  implementation "com.jakewharton.timber:timber:$versions.timberVersion"
+}
+
+apply from: "$rootDir/spotless.gradle"

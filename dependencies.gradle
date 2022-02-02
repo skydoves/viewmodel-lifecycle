@@ -1,0 +1,24 @@
+ext.versions = [
+    minSdk           : 21,
+    compileSdk       : 31,
+    versionCode      : 1,
+    versionName      : '1.0.0',
+
+    gradleBuildTool  : '7.1.0',
+    spotlessGradle   : '6.1.0',
+    ktlintGradle     : '0.41.0',
+    dokkaGradle      : '1.6.10',
+    binaryValidator  : '0.8.0',
+    mavenPublish     : '0.18.0',
+
+    kotlin           : '1.5.32',
+    androidxAppcompat: '1.4.1',
+    lifecycle        : '2.4.0',
+    coroutinesVersion: '1.5.2',
+    rxKotlin         : '3.0.1',
+
+    // for demo
+    material         : '1.5.0',
+    fragmentVersion  : '1.4.0',
+    timberVersion    : '5.0.1',
+]
