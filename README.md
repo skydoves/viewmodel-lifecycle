@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-<img src="preview/preview.svg" />
+<img src="preview/preview.png" />
 </p>
 
 ## Including in your project
@@ -34,7 +34,7 @@ Next, add the dependency below to your **module**'s `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation "com.github.skydoves:viewmodel-lifecycle:1.0.0"
+    implementation "com.github.skydoves:viewmodel-lifecycle:1.0.1"
 }
 ```
 ## SNAPSHOT 
@@ -134,6 +134,44 @@ viewModelLifecycleOwner.lifecycle.addObserver(
 
 You can also implement your own custom lifecycle observer classes with `DefaultViewModelLifecycleObserver` and `FullViewModelLifecycleObserver` interfaces.
 
+
+<img src="https://user-images.githubusercontent.com/24237865/152351055-40f6e478-01dc-4ef4-be90-064cd047d789.png" width="32%" align="right" />  
+
+## ViewModel Lifecycle for RxKotlin (RxJava)
+
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.skydoves/viewmodel-lifecycle.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.skydoves%22%20AND%20a:%22viewmodel-lifecycle%22)
+
+ViewModel Lifecycle provides useful extensions for RxKotlin (RxJava).
+
+### Gradle
+
+Add the dependency below to your **module's** `build.gradle` file:
+
+```gradle
+dependencies {
+    // RxKotlin3 (RxJava3)
+    implementation "com.github.skydoves:viewmodel-lifecycle-rxkotlin3:$version"
+
+    // RxKotlin2 (RxJava2)
+    implementation "com.github.skydoves:viewmodel-lifecycle-rxkotlin2:$version"
+}
+```
+
+### AutoDisposable
+
+You can create a `Disposable` delegate property, which will be called `disposed()` automatically when ViewModel will be cleared with `autoDisposable` extension as the following:
+
+```kotlin
+class MyViewModel : ViewModel() {
+
+  // dispose CompositeDisposable automatically when viewModel is getting cleared
+  val compositeDisposable by autoDisposable(CompositeDisposable())
+}
+```
+
+The `autoDisposable` extension creates a read-only property, which receives the `Disposable` interface as an inital value.
+
+
 <img src="https://user-images.githubusercontent.com/24237865/152125637-5f7830e9-c147-40f0-9d1c-951c9333179c.png" width="32%" align="right" />  
 
 ## ViewModel Lifecycle for Coroutines
@@ -148,7 +186,7 @@ Add the dependency below to your **module's** `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation "com.github.skydoves:viewmodel-lifecycle-coroutines:1.0.0"
+    implementation "com.github.skydoves:viewmodel-lifecycle-coroutines:$version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
 }
 ```
