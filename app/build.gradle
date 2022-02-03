@@ -3,8 +3,6 @@ plugins {
   id 'org.jetbrains.kotlin.android'
 }
 
-apply from: "$rootDir/dependencies.gradle"
-
 android {
   compileSdk versions.compileSdk
 
@@ -33,10 +31,9 @@ android {
 dependencies {
   implementation project(":viewmodel-lifecycle")
   implementation project(":viewmodel-lifecycle-coroutines")
+  implementation project(":viewmodel-lifecycle-rxkotlin3")
 
   implementation "com.google.android.material:material:$versions.material"
   implementation "androidx.fragment:fragment-ktx:$versions.fragmentVersion"
   implementation "com.jakewharton.timber:timber:$versions.timberVersion"
 }
-
-apply from: "$rootDir/spotless.gradle"

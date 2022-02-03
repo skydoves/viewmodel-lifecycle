@@ -28,6 +28,7 @@ private const val JOB_KEY = "com.skydoves.viewmodel.lifecycle.ViewModelLifecycle
  * [ViewModelLifecycle] tied to this [ViewModel]. The lifecycle owner will be destroyed
  * when ViewModel will be cleared, i.e [ViewModel.onCleared] is called.
  */
+@ViewModelLifespan
 public val ViewModel.viewModelLifecycleOwner: ViewModelLifecycleOwner
   get() {
     val viewModelClass = traverseViewModel()

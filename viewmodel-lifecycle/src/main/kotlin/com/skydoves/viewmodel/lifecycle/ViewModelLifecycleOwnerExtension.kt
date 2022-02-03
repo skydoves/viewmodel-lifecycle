@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModel
  *
  * Obtains a [ViewModelLifecycle] from the [ViewModelLifecycleOwner].
  */
+@ViewModelLifespan
 public val ViewModelLifecycleOwner.viewModelLifecycle: ViewModelLifecycle
   inline get() = lifecycle as ViewModelLifecycle
 

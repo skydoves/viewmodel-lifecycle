@@ -5,8 +5,6 @@ plugins {
   id 'binary-compatibility-validator'
 }
 
-apply from: "$rootDir/dependencies.gradle"
-
 android {
   compileSdkVersion versions.compileSdk
 
@@ -33,11 +31,10 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 }
 
 dependencies {
-  implementation project(":viewmodel-lifecycle")
+  api project(":viewmodel-lifecycle")
 
   implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutinesVersion"
 }
 
 apply plugin: "com.vanniktech.maven.publish"
-apply from: "$rootDir/spotless.gradle"
