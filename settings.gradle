@@ -16,4 +16,4 @@ rootProject.name = "ViewModelLifecycleDemo"
 include ':app'
 include ':viewmodel-lifecycle'
 include ':viewmodel-lifecycle-coroutines'
-include ':viewmodel-lifecycle-rxkotlin'
+include ':viewmodel-lifecycle-rxkotlin3'

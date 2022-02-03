@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
-package com.skydoves.viewmodel.lifecycle.rxkotlin
+package com.skydoves.viewmodel.lifecycle.rxkotlin3
 
-public class AutoDisposable
+@Target(
+  AnnotationTarget.FUNCTION,
+  AnnotationTarget.PROPERTY,
+  AnnotationTarget.PROPERTY_GETTER,
+  AnnotationTarget.PROPERTY_SETTER
+)
+@DslMarker
+@Retention(AnnotationRetention.BINARY)
+internal annotation class ViewModelAutodispose

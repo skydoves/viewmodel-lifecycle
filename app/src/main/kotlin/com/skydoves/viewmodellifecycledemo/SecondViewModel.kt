@@ -20,12 +20,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.skydoves.viewmodel.lifecycle.addViewModelOnClearedObserver
 import com.skydoves.viewmodel.lifecycle.addViewModelOnInitializedObserver
+import com.skydoves.viewmodel.lifecycle.rxkotlin3.autoDisposable
 import com.skydoves.viewmodel.lifecycle.viewModelLifecycleOwner
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import timber.log.Timber
 
 class SecondViewModel : ViewModel() {
 
   val liveData: MutableLiveData<String> = MutableLiveData()
+
+  val autoDisposable by autoDisposable(CompositeDisposable())
 
   init {
     Timber.d("initialize SecondViewModel")

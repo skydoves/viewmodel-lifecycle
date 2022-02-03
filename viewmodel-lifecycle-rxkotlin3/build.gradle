@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-  compileSdk 31
+  compileSdkVersion versions.compileSdk
 
   defaultConfig {
     minSdk versions.minSdk
@@ -29,5 +29,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 
 dependencies {
   api project(":viewmodel-lifecycle")
-  api "io.reactivex.rxjava3:rxkotlin:$versions.rxKotlin"
+  api "io.reactivex.rxjava3:rxkotlin:$versions.rxKotlin3"
+
+  implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
 }
