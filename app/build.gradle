@@ -3,8 +3,6 @@ plugins {
   id 'org.jetbrains.kotlin.android'
 }
 
-apply from: "$rootDir/dependencies.gradle"
-
 android {
   compileSdk versions.compileSdk
 
@@ -38,5 +36,3 @@ dependencies {
   implementation "androidx.fragment:fragment-ktx:$versions.fragmentVersion"
   implementation "com.jakewharton.timber:timber:$versions.timberVersion"
 }
-
-apply from: "$rootDir/spotless.gradle"

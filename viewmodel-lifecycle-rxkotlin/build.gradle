@@ -6,12 +6,11 @@ plugins {
 }
 
 android {
-  compileSdkVersion versions.compileSdk
+  compileSdk 31
 
   defaultConfig {
     minSdk versions.minSdk
     targetSdk versions.compileSdk
-    consumerProguardFiles "consumer-rules.pro"
   }
 
   compileOptions {
@@ -29,8 +28,6 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 }
 
 dependencies {
-  implementation "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
-  implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
+  api project(":viewmodel-lifecycle")
+  api "io.reactivex.rxjava3:rxkotlin:$versions.rxKotlin"
 }
-
-apply plugin: "com.vanniktech.maven.publish"
