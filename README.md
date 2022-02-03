@@ -162,10 +162,10 @@ class MyInteractor(
   private val viewModelLifecycleOwner: ViewModelLifecycleOwner
 ) : CoroutineScope {
 
-  override val coroutineContext: CoroutineContext = SupervisorJob() + Dispatchers.Main.immediate
+  override val coroutineContext: CoroutineContext = SupervisorJob() + Dispatchers.Main
 
   init {
-    launch {
+    launch(coroutineContext) {
       viewModelLifecycleOwner.viewModelLifecycleFlow().collect { viewModelState ->
         when (viewModelState) {
           ViewModelState.INITIALIZED -> // ViewModel was initialized.
