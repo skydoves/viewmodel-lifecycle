@@ -33,3 +33,5 @@ dependencies {
 
   implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
 }
+
+apply plugin: "com.vanniktech.maven.publish"
