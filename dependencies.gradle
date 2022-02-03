@@ -14,6 +14,7 @@ ext.versions = [
     androidxAppcompat: '1.4.1',
     lifecycle        : '2.4.0',
     coroutinesVersion: '1.5.2',
+    rxKotlin2         : '2.4.0',
     rxKotlin3         : '3.0.1',
 
     // for demo

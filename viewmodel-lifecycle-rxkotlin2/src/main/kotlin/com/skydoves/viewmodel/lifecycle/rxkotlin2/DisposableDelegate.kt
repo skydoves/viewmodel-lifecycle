@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.skydoves.viewmodel.lifecycle.rxkotlin3
+package com.skydoves.viewmodel.lifecycle.rxkotlin2
 
 import androidx.lifecycle.ViewModel
 import com.skydoves.viewmodel.lifecycle.addViewModelOnClearedObserver
 import com.skydoves.viewmodel.lifecycle.viewModelLifecycleOwner
-import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.disposables.Disposable
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 

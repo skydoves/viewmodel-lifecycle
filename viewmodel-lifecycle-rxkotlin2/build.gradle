@@ -1,0 +1,35 @@
+plugins {
+  id 'com.android.library'
+  id 'org.jetbrains.kotlin.android'
+  id 'org.jetbrains.dokka'
+  id 'binary-compatibility-validator'
+}
+
+android {
+  compileSdkVersion versions.compileSdk
+
+  defaultConfig {
+    minSdk versions.minSdk
+    targetSdk versions.compileSdk
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+  kotlinOptions.freeCompilerArgs += ["-Xexplicit-api=strict"]
+}
+
+dependencies {
+  api project(":viewmodel-lifecycle")
+  api "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin2"
+
+  implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
+}
