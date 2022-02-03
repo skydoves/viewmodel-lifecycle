@@ -9,7 +9,8 @@
 </p>
 
 <p align="center">
-🌳 ViewModel Lifecycle allows you to track and observe Jetpack ViewModel's lifecycle changes.
+🌳 ViewModel Lifecycle allows you to track and observe Jetpack ViewModel's lifecycle changes.<br>
+Also, it supports useful extension functions for RxKotlin/RxJava and Coroutines.
 </p>
 
 <p align="center">
@@ -170,7 +171,6 @@ class MyViewModel : ViewModel() {
 ```
 
 The `autoDisposable` extension creates a read-only property, which receives the `Disposable` interface as an inital value.
-
 
 <img src="https://user-images.githubusercontent.com/24237865/152125637-5f7830e9-c147-40f0-9d1c-951c9333179c.png" width="32%" align="right" />  
 
