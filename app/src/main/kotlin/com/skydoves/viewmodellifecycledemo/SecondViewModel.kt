@@ -29,7 +29,7 @@ class SecondViewModel : ViewModel() {
 
   val liveData: MutableLiveData<String> = MutableLiveData()
 
-  val autoDisposable by autoDisposable(CompositeDisposable())
+  val compositeDisposable by autoDisposable(CompositeDisposable())
 
   init {
     Timber.d("initialize SecondViewModel")

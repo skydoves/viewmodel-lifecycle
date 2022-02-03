@@ -23,6 +23,7 @@ import com.skydoves.viewmodel.lifecycle.addViewModelLifecycleObserver
 import com.skydoves.viewmodel.lifecycle.viewModelLifecycle
 import com.skydoves.viewmodel.lifecycle.viewModelLifecycleOwner
 import com.skydoves.viewmodellifecycledemo.databinding.ActivityMainBinding
+import io.reactivex.rxjava3.core.Observable
 import timber.log.Timber
 
 class SecondActivity : AppCompatActivity() {
@@ -44,5 +45,24 @@ class SecondActivity : AppCompatActivity() {
     }
 
     Timber.d("observer count: " + viewModel.viewModelLifecycleOwner.viewModelLifecycle.getObserverCount())
+
+    val observable = Observable.just(0).subscribe()
+    viewModel.compositeDisposable.add(observable)
+
+    Timber.d("disposable count : ${viewModel.compositeDisposable.size()}")
+
+    viewModel.liveData.observe(viewModel.viewModelLifecycleOwner) { }
+
+    Timber.d("has active observers : ${viewModel.liveData.hasActiveObservers()}")
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+
+    Timber.d("current lifecycle state: " + viewModel.viewModelLifecycleOwner.viewModelLifecycle.currentState)
+
+    Timber.d("disposable count : ${viewModel.compositeDisposable.size()}")
+
+    Timber.d("has active observers : ${viewModel.liveData.hasActiveObservers()}")
   }
 }
