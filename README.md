@@ -160,7 +160,7 @@ dependencies {
 
 ### AutoDisposable
 
-You can create a `Disposable` delegate property, which will be called `disposed()` automatically when ViewModel will be cleared with `autoDisposable` extension as the following:
+With `autoDisposable` extension, you can create a `Disposable` delegate property which will call the `dispose()` function automatically when ViewModel will be cleared as the following:
 
 ```kotlin
 class MyViewModel : ViewModel() {
