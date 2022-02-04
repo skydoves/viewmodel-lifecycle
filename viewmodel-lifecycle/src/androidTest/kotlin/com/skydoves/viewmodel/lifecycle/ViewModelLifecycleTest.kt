@@ -81,4 +81,22 @@ internal class ViewModelLifecycleTest {
 
     assertThat(viewModelLifecycle?.getObserverCount()).isEqualTo(0)
   }
+
+  @Test
+  fun verifyHandleLifecycleEvent() {
+    val viewModelLifecycle = ViewModelLifecycle(TestViewLifecycleOwner())
+    val lifecycleObserver = mock<ViewModelLifecycleObserver>()
+
+    viewModelLifecycle.addObserver(lifecycleObserver)
+
+    assertThat(viewModelLifecycle.isCleared).isFalse()
+    assertThat(viewModelLifecycle.viewModelState).isEqualTo(ViewModelState.INITIALIZED)
+    verify(lifecycleObserver).onStateChanged(ViewModelState.INITIALIZED)
+
+    viewModelLifecycle.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+
+    assertThat(viewModelLifecycle.isCleared).isTrue()
+    assertThat(viewModelLifecycle.viewModelState).isEqualTo(ViewModelState.CLEARED)
+    verify(lifecycleObserver).onStateChanged(ViewModelState.CLEARED)
+  }
 }
