@@ -14,18 +14,12 @@
  * limitations under the License.
  */
 
-package com.skydoves.viewmodel.lifecycle
+package com.skydoves.viewmodel.lifecycle.rxkotlin3
 
-/**
- * @author skydoves (Jaewoong Eum)
- *
- * A [ViewModelLifecycleObserver] that has [onInitialized], [onCleared], [onStateChanged] specs.
- */
-public interface FullViewModelLifecycleObserver : ViewModelLifecycleObserver {
+import androidx.activity.ComponentActivity
+import androidx.activity.viewModels
 
-  public fun onInitialized(viewModelLifecycleOwner: ViewModelLifecycleOwner)
+internal class RxTestKotlinActivity : ComponentActivity() {
 
-  public fun onCleared(viewModelLifecycleOwner: ViewModelLifecycleOwner)
-
-  override fun onStateChanged(viewModelState: ViewModelState) {}
+  val viewModel: RxTestViewModel by viewModels()
 }
