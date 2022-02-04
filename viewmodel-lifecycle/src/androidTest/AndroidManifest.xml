@@ -1,12 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  package="com.skydoves.viewmodel.lifecycle.rxkotlin2">
+  package="com.skydoves.viewmodel.lifecycle">
 
   <uses-sdk android:targetSdkVersion="31" />
 
   <application>
     <activity
-      android:name=".RxTestKotlinActivity"
+      android:name=".ViewModelLifecycleTestActivity"
       android:exported="false"
       tools:node="merge" />
   </application>

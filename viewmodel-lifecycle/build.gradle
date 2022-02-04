@@ -12,6 +12,7 @@ android {
     minSdk versions.minSdk
     targetSdk versions.compileSdk
     consumerProguardFiles "consumer-rules.pro"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
 
   compileOptions {
@@ -31,6 +32,15 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
   implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
+
+  androidTestImplementation "com.google.truth:truth:$versions.truth"
+  androidTestImplementation "androidx.test.espresso:espresso-core:$versions.esspresso"
+  androidTestImplementation "androidx.test:runner:$versions.androidxTest"
+  androidTestImplementation "androidx.test.ext:junit-ktx:$versions.androidxTestJunit"
+  androidTestImplementation "androidx.fragment:fragment-ktx:$versions.fragmentVersion"
+  androidTestImplementation "androidx.arch.core:core-testing:$versions.archTestCore"
+  androidTestImplementation "org.mockito:mockito-android:$versions.mockitoAndroid"
+  androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockitoKotlin"
 }
 
 apply plugin: "com.vanniktech.maven.publish"

@@ -25,6 +25,9 @@ ext.versions = [
     // unit test
     truth            : '1.0.1',
     esspresso        : '3.4.0',
+    mockitoKotlin    : '2.2.0',
+    mockitoAndroid   : '3.0.0',
+    archTestCore     : '2.0.0',
     androidxTest     : '1.4.0',
     androidxTestJunit: '1.1.3',
 ]

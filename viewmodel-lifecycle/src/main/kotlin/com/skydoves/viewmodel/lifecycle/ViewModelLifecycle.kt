@@ -57,7 +57,7 @@ public class ViewModelLifecycle constructor(
   private var state: State = State.INITIALIZED
 
   /** Current [ViewModelState]. */
-  private val viewModelState: ViewModelState
+  public val viewModelState: ViewModelState
     get() = state.toViewModelState()
 
   /** Check the current [ViewModelState] is cleared or not. */
