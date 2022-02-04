@@ -20,7 +20,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.MediumTest
+import androidx.test.filters.LargeTest
 import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -28,7 +28,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@MediumTest
+@LargeTest
 @RunWith(AndroidJUnit4::class)
 internal class ViewModelLifecycleTest {
 
@@ -38,54 +38,38 @@ internal class ViewModelLifecycleTest {
 
   @Test
   fun verifyViewModeLifecycleState() {
-    var viewModel: LifecycleTestViewModel? = null
+    var viewModelLifecycle: ViewModelLifecycle? = null
 
     val scenario = ActivityScenario.launch(ViewModelLifecycleTestActivity::class.java).use {
       it.moveToState(Lifecycle.State.CREATED)
       it.onActivity { activity ->
         assertThat(activity.viewModel).isNotNull()
-        assertThat(
-          activity.viewModel.viewModelLifecycleOwner.viewModelLifecycle.viewModelState
-        ).isEqualTo(
-          ViewModelState.INITIALIZED
-        )
-        assertThat(activity.viewModel.viewModelLifecycleOwner.viewModelLifecycle.isCleared).isFalse()
-
-        viewModel = activity.viewModel
+        viewModelLifecycle = activity.viewModel.viewModelLifecycleOwner.viewModelLifecycle
+        assertThat(viewModelLifecycle?.viewModelState).isEqualTo(ViewModelState.INITIALIZED)
+        assertThat(viewModelLifecycle?.isCleared).isFalse()
       }
     }
 
     scenario.moveToState(Lifecycle.State.DESTROYED)
 
-    assertThat(viewModel).isNotNull()
-    assertThat(
-      viewModel?.viewModelLifecycleOwner?.viewModelLifecycle?.viewModelState
-    ).isEqualTo(
-      ViewModelState.CLEARED
-    )
-    assertThat(viewModel?.viewModelLifecycleOwner?.viewModelLifecycle?.isCleared).isTrue()
+    assertThat(viewModelLifecycle?.viewModelState).isEqualTo(ViewModelState.CLEARED)
+    assertThat(viewModelLifecycle?.isCleared).isTrue()
   }
 
   @Test
   fun verifyVieModelLifecycleObserver() {
-    var viewModel: LifecycleTestViewModel? = null
     var viewModelLifecycle: ViewModelLifecycle? = null
-
     val lifecycleObserver = mock<ViewModelLifecycleObserver>()
 
     val scenario = ActivityScenario.launch(ViewModelLifecycleTestActivity::class.java).use {
       it.moveToState(Lifecycle.State.CREATED)
       it.onActivity { activity ->
         assertThat(activity.viewModel).isNotNull()
-        viewModel = activity.viewModel.also { vm ->
-          viewModelLifecycle = vm.viewModelLifecycleOwner.viewModelLifecycle
-          viewModelLifecycle?.addObserver(lifecycleObserver)
-          assertThat(viewModelLifecycle?.getObserverCount()).isEqualTo(1)
-        }
+        viewModelLifecycle = activity.viewModel.viewModelLifecycleOwner.viewModelLifecycle
+        viewModelLifecycle?.addObserver(lifecycleObserver)
+        assertThat(viewModelLifecycle?.getObserverCount()).isEqualTo(1)
       }
     }
-
-    assertThat(viewModel).isNotNull()
 
     verify(lifecycleObserver).onStateChanged(ViewModelState.INITIALIZED)
 
