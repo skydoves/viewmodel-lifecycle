@@ -39,6 +39,7 @@ public final class com/skydoves/viewmodel/lifecycle/ViewModelLifecycle : android
 	public final fun addViewModelLifecycleObserver (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
 	public fun getCurrentState ()Landroidx/lifecycle/Lifecycle$State;
 	public final fun getObserverCount ()I
+	public final fun getViewModelState ()Lcom/skydoves/viewmodel/lifecycle/ViewModelState;
 	public final fun isCleared ()Z
 	public fun removeObserver (Landroidx/lifecycle/LifecycleObserver;)V
 }
