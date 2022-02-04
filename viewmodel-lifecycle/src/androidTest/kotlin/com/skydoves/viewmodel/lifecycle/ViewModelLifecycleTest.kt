@@ -21,6 +21,8 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.google.common.truth.Truth.assertThat
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -54,5 +56,30 @@ internal class ViewModelLifecycleTest {
     ).isEqualTo(
       ViewModelState.CLEARED
     )
+  }
+
+  @Test
+  fun verifyVieModelLifecycleObserver() {
+    var viewModel: LifecycleTestViewModel? = null
+
+    val lifecycleObserver = mock<ViewModelLifecycleObserver>()
+
+    val scenario = ActivityScenario.launch(ViewModelLifecycleTestActivity::class.java).use {
+      it.moveToState(Lifecycle.State.CREATED)
+      it.onActivity { activity ->
+        assertThat(activity.viewModel).isNotNull()
+        viewModel = activity.viewModel.also { vm ->
+          vm.viewModelLifecycleOwner.viewModelLifecycle.addObserver(lifecycleObserver)
+        }
+      }
+    }
+
+    assertThat(viewModel).isNotNull()
+
+    verify(lifecycleObserver).onStateChanged(ViewModelState.INITIALIZED)
+
+    scenario.moveToState(Lifecycle.State.DESTROYED)
+
+    verify(lifecycleObserver).onStateChanged(ViewModelState.CLEARED)
   }
 }
