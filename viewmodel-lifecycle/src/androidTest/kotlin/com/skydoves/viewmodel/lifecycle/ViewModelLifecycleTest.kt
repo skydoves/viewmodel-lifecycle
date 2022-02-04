@@ -16,6 +16,7 @@
 
 package com.skydoves.viewmodel.lifecycle
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -23,12 +24,17 @@ import androidx.test.filters.MediumTest
 import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @MediumTest
 @RunWith(AndroidJUnit4::class)
 internal class ViewModelLifecycleTest {
+
+  @Rule
+  @JvmField
+  val instantExecutorRule: InstantTaskExecutorRule = InstantTaskExecutorRule()
 
   @Test
   fun verifyViewModeLifecycleState() {
@@ -43,6 +49,7 @@ internal class ViewModelLifecycleTest {
         ).isEqualTo(
           ViewModelState.INITIALIZED
         )
+        assertThat(activity.viewModel.viewModelLifecycleOwner.viewModelLifecycle.isCleared).isFalse()
 
         viewModel = activity.viewModel
       }
@@ -56,11 +63,13 @@ internal class ViewModelLifecycleTest {
     ).isEqualTo(
       ViewModelState.CLEARED
     )
+    assertThat(viewModel?.viewModelLifecycleOwner?.viewModelLifecycle?.isCleared).isTrue()
   }
 
   @Test
   fun verifyVieModelLifecycleObserver() {
     var viewModel: LifecycleTestViewModel? = null
+    var viewModelLifecycle: ViewModelLifecycle? = null
 
     val lifecycleObserver = mock<ViewModelLifecycleObserver>()
 
@@ -69,7 +78,9 @@ internal class ViewModelLifecycleTest {
       it.onActivity { activity ->
         assertThat(activity.viewModel).isNotNull()
         viewModel = activity.viewModel.also { vm ->
-          vm.viewModelLifecycleOwner.viewModelLifecycle.addObserver(lifecycleObserver)
+          viewModelLifecycle = vm.viewModelLifecycleOwner.viewModelLifecycle
+          viewModelLifecycle?.addObserver(lifecycleObserver)
+          assertThat(viewModelLifecycle?.getObserverCount()).isEqualTo(1)
         }
       }
     }
@@ -81,5 +92,9 @@ internal class ViewModelLifecycleTest {
     scenario.moveToState(Lifecycle.State.DESTROYED)
 
     verify(lifecycleObserver).onStateChanged(ViewModelState.CLEARED)
+
+    viewModelLifecycle?.removeObserver(lifecycleObserver)
+
+    assertThat(viewModelLifecycle?.getObserverCount()).isEqualTo(0)
   }
 }

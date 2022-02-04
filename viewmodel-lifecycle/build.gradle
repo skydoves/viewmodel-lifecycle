@@ -38,7 +38,8 @@ dependencies {
   androidTestImplementation "androidx.test:runner:$versions.androidxTest"
   androidTestImplementation "androidx.test.ext:junit-ktx:$versions.androidxTestJunit"
   androidTestImplementation "androidx.fragment:fragment-ktx:$versions.fragmentVersion"
-  androidTestImplementation "org.mockito:mockito-android:3.0.0"
+  androidTestImplementation "androidx.arch.core:core-testing:$versions.archTestCore"
+  androidTestImplementation "org.mockito:mockito-android:$versions.mockitoAndroid"
   androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockitoKotlin"
 }
 
