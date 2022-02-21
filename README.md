@@ -5,6 +5,7 @@
   <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
   <a href="https://github.com/skydoves/ViewModel-Lifecycle/actions/workflows/android.yml"><img alt="API" src="https://github.com/skydoves/ViewModel-Lifecycle/actions/workflows/android.yml/badge.svg"/></a>
   <a href="https://github.com/skydoves"><img alt="Profile" src="https://skydoves.github.io/badges/skydoves.svg"/></a>
+  <a href="https://androidweekly.net/issues/issue-506"><img alt="Android Weekly" src="https://skydoves.github.io/badges/android-weekly.svg"/></a>
   <a href="https://skydoves.github.io/libraries/viewmodel-lifecycle/html/viewmodel-lifecycle/com.skydoves.viewmodel.lifecycle/index.html"><img alt="Dokka" src="https://skydoves.github.io/badges/dokka-viewmodel-lifecycle.svg"/></a>
 </p>
 
