@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-🌳 ViewModel Lifecycle allows you to track and observe Jetpack ViewModel's lifecycle changes.<br>
-Also, it supports useful extension functions for RxKotlin/RxJava and Coroutines.
+🌳 ViewModel Lifecycle allows you to track and observe Jetpack's ViewModel lifecycle changes.<br>
+Also, it supports useful extensions for RxKotlin/RxJava and Coroutines.
 </p>
 
 <p align="center">
