@@ -55,7 +55,7 @@ repositories {
 
 ### ViewModelLifecycleOwner
 
-`ViewModelLifecycleOwner` is a lifecycle owner for Jetpack ViewModel, which extends [LifecycleOwner](https://developer.android.com/reference/androidx/lifecycle/LifecycleOwner). It traces and provides lifecycle states for ViewModels. You can get the `ViewModelLifecycleOwner` from your ViewModel as the following:
+`ViewModelLifecycleOwner` is a lifecycle owner for the Jetpack's ViewModel, which extends [LifecycleOwner](https://developer.android.com/reference/androidx/lifecycle/LifecycleOwner). It traces and provides lifecycle states for ViewModels. You can get the `ViewModelLifecycleOwner` from your ViewModel as the following:
 
 ```kotlin
 class MyActivity : AppCompatActivity() {
@@ -69,7 +69,7 @@ class MyActivity : AppCompatActivity() {
 ...
 ```
 
-Also, you can get it directly on your ViewModel as the following:
+Also, you can get it directly from your ViewModel as the following:
 
 ```kotlin
 class MyViewModel : ViewModel() {
@@ -80,7 +80,7 @@ class MyViewModel : ViewModel() {
 
 #### ViewModelLifecycleOwner for LiveData
 
-You can also use it to observe your [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) with the `ViewModelLifecycleOwner` according to ViewModel's lifecycle. If the lifecycle moves to the cleared state, the observer will automatically be removed.
+You can also use it to observe your [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) with the `ViewModelLifecycleOwner` depending on ViewModel's lifecycle. If the lifecycle moves to the cleared state, the observer will automatically be removed.
 
 ```kotlin
 class MyViewModel : ViewModel() {
@@ -99,7 +99,7 @@ class MyViewModel : ViewModel() {
 
 ### ViewModelLifecycle
 
-`ViewModelLifecycle` is an implementation of [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle), which follows the ViewModel's lifecycle. `ViewModelLifecycle` handles multiple `LifecycleObserver` such as `ViewModelLifecycleObserver` to track ViewModel's lifecycle. `ViewModelLifecycle` belongs to `ViewModelLifecycleOwner`, and you can get it directly from the [ViewModelLifecycleOwner] as the following:
+`ViewModelLifecycle` is an implementation of the [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle), which follows the ViewModel's lifecycle. `ViewModelLifecycle` handles multiple `LifecycleObserver` such as `ViewModelLifecycleObserver` to track ViewModel's lifecycle. `ViewModelLifecycle` belongs to `ViewModelLifecycleOwner`, and you can get it directly from the [ViewModelLifecycleOwner] as the following:
 
 ```kotlin
 val viewModelLifecycle = viewModelLifecycleOwner.viewModelLifecycle
